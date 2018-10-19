@@ -8,7 +8,7 @@ const soundful = (function () {
   }
 
   function handleWaveType(){ 
-    $('#js-add-sound').on('click', function(){ 
+    $('#js-add-sound').on('click', '.wave', function(){ 
       const waveType = $('input[name=WaveType]:checked').val(); 
       console.log('handled WaveType: ', waveType);
       render(); 
@@ -25,8 +25,10 @@ const soundful = (function () {
   }
 
   function handleTransport(){ 
-    //console.log('handlTransport');
-    //render(); 
+    $('#js-add-sound').on('click', '#js-transport', function(){ 
+      console.log('handleTransport');
+      render(); 
+    }); 
   }
 
   function handleAddSound(){ 

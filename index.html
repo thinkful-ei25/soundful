@@ -12,15 +12,15 @@
   <section id="js-add-sound">
     <form>
       <label for="WaveType"><strong>Wave Type</strong></label><br>
-      <input type="radio" name="WaveType" value="Sine"> Sine<br>
-      <input type="radio" name="WaveType" value="Square"> Square<br>
-      <input type="radio" name="WaveType" value="Triangle"> Triangle<br>
-      <input type="radio" name="WaveType" value="SawTooth"> Saw Tooth<br>
+      <input type="radio" class="wave" name="WaveType" value="Sine"> Sine<br>
+      <input type="radio" class="wave" name="WaveType" value="Square"> Square<br>
+      <input type="radio" class="wave" name="WaveType" value="Triangle"> Triangle<br>
+      <input type="radio" class="wave" name="WaveType" value="SawTooth"> Saw Tooth<br>
       <br>
       <label for="frequency"><strong>Frequency</strong></label><br>
       <input type="range" min="1" max="100" value="50" id="frequency"><br>
       <br>
-      <input type="button" value="Play/Stop">
+      <input type="button" value="Play/Stop" id="js-transport">
       <br>
       <br>
       <input type="submit" value="Add Sound">
