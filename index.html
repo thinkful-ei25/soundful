@@ -7,8 +7,23 @@
   <title>Soundful</title>
 </head>
 <body>
-  <h1>Soundful</h1>
-
+  <!-- <h1>Soundful</h1> -->
+  <br>
+  <form>
+    <label for="WaveType"><strong>Wave Type</strong></label><br>
+    <input type="radio" name="WaveType" value="Sine"> Sine<br>
+    <input type="radio" nameß="WaveType" value="Square"> Square<br>
+    <input type="radio" name="WaveType" value="Triangle"> Triangle<br>
+    <input type="radio" name="WaveType" value="SawTooth"> Saw Tooth<br>
+    <br>
+    <label for="frequency"><strong>Frequency</strong></label><br>
+    <input type="range" min="1" max="100" value="50" id="frequency"><br>
+    <br>
+    <input type="button" value="Play/Stop">
+    <br>
+    <br>
+    <input type="button" value="Add Sound">
+  </form>
   <link rel="icon" href="data:;base64,iVBORwOKGO=" />
 </body>
 </html>
