@@ -13,13 +13,15 @@ const soundful = (function () {
       console.log('handled WaveType: ', waveType);
       render(); 
     }); 
-
-
   }
 
   function handleFrequency(){ 
-    //console.log('handleFrequency');
-    //render(); 
+    $('#js-add-sound').on('input change', function(){ 
+      const frequency = $('input[type=range]').val(); 
+      console.log('handleFrequency');
+      render(); 
+    }); 
+
   }
 
   function handleTransport(){ 
