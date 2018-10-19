@@ -30,8 +30,11 @@ const soundful = (function () {
   }
 
   function handleAddSound(){ 
-    //console.log('handleAddSound');
-    //render(); 
+    $('#js-add-sound').submit(function(event){
+      event.preventDefault();  
+      console.log('handleAddSound', 'submitted');
+      render(); 
+    }); 
   }
 
   function bindEventListeners(){ 
