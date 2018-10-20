@@ -1,19 +1,21 @@
-/* global $ */ 
+/* global $ STORE */ 
 'use strict';
 
 // eslint-disable-next-line no-unused-vars
 const soundful = (function () { 
 
   function render(){ 
+    console.log(STORE.freq, STORE.waveType, STORE.playBackState);
     // eslint-disable-next-line no-console
-    console.log('rendered');
+    //console.log('rendered');
   }
 
   function handleWaveType(){ 
     $('#js-add-sound').on('click', '.wave', function(){ 
       const waveType = $('input[name=WaveType]:checked').val(); 
+      STORE.waveType = waveType; 
       // eslint-disable-next-line no-console
-      console.log('handled WaveType: ', waveType);
+      //console.log('handled WaveType: ', waveType);
       render(); 
     }); 
   }
@@ -21,8 +23,9 @@ const soundful = (function () {
   function handleFrequency(){ 
     $('#js-add-sound').on('input change', function(){ 
       const frequency = $('input[type=range]').val(); 
+      STORE.freq = frequency; 
       // eslint-disable-next-line no-console
-      console.log('handleFrequency', frequency);
+      //console.log('handleFrequency', frequency);
       render(); 
     }); 
 
@@ -30,8 +33,9 @@ const soundful = (function () {
 
   function handleTransport(){ 
     $('#js-add-sound').on('click', '#js-transport', function(){ 
+      STORE.playBackState = !STORE.playBackState; 
       // eslint-disable-next-line no-console
-      console.log('handleTransport');
+      //console.log('handleTransport');
       render(); 
     }); 
   }
@@ -40,7 +44,7 @@ const soundful = (function () {
     $('#js-add-sound').submit(function(event){
       event.preventDefault();  
       // eslint-disable-next-line no-console
-      console.log('handleAddSound', 'submitted');
+      //console.log('handleAddSound', 'submitted');
       render(); 
     }); 
   }

@@ -4,7 +4,7 @@
 const STORE = (function(){ 
 
   return { 
-    freq: null, playBackState: false, waveType:' '
+    freq: 0, playBackState: false, waveType:' '
   }; 
 
 }()); 
