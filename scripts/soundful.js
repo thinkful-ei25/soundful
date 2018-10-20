@@ -8,13 +8,25 @@ const soundful = (function() {
   let oscillator;
 
   function render() {
-    if (STORE.playBackState) playSound(); 
+    if (STORE.current.playBackState) playSound(); 
     
-    if (!STORE.playBackState) stopSound(); 
+    if (!STORE.current.playBackState) stopSound(); 
 
+    updateOscillator(); 
+  }
+
+  function updateOscillator(){ 
     if(oscillator) { 
-      oscillator.type = STORE.waveType; 
-      oscillator.frequency.value = STORE.freq; 
+      oscillator.type = STORE.current.waveType; 
+
+      if (STORE.current.frequency) 
+      {
+        oscillator.frequency.value = STORE.current.frequency; 
+      }
+      else 
+      { 
+        oscillator.frequency.value = 650; 
+      }
       return; 
     }
   }
@@ -39,7 +51,7 @@ const soundful = (function() {
   function handleWaveType() {
     $('#js-add-sound').on('click', '.wave', function() {
       const waveType = $('input[name=WaveType]:checked').val();
-      STORE.waveType = waveType;
+      STORE.current.waveType = waveType;
       render();
     });
   }
@@ -47,14 +59,14 @@ const soundful = (function() {
   function handleFrequency() {
     $('#js-add-sound').on('input change', function() {
       const frequency = $('input[type=range]').val();
-      STORE.freq = frequency;
+      STORE.current.frequency = frequency;
       render();
     });
   }
 
   function handleTransport() {
     $('#js-add-sound').on('click', '#js-transport', function() {
-      STORE.playBackState = !STORE.playBackState;
+      STORE.current.playBackState = !STORE.current.playBackState;
       render();
     });
   }
@@ -62,9 +74,11 @@ const soundful = (function() {
   function handleAddSound() {
     $('#js-add-sound').submit(function(event) {
       event.preventDefault();
+      STORE.sounds.push(Object.assign({}, STORE.current)); 
       render();
     });
   }
+
 
   function bindEventListeners() {
     handleWaveType();
@@ -77,5 +91,5 @@ const soundful = (function() {
     context = new AudioContext();
   }
 
-  return { init, render, bindEventListeners };
+  return {init, render, bindEventListeners};
 })();
