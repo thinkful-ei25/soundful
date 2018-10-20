@@ -35,6 +35,7 @@ if (require.main === module) {
     // eslint-disable-next-line no-console
     console.info(`Server listening on ${this.address().port}`); 
   }).on('error', err => { 
+    // eslint-disable-next-line no-console
     console.err(err);
   });
 }

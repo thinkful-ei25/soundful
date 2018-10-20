@@ -1,5 +1,7 @@
+/* global $ */ 
 'use strict';
 
+// eslint-disable-next-line no-unused-vars
 const api = (function (){ 
   // eslint-disable-next-line no-unused-vars
   const create = function(path, obj) { 
@@ -12,5 +14,6 @@ const api = (function (){
       data: JSON.stringify(obj)
     }); 
   }; 
+
 
 }); 
