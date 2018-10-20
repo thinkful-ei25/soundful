@@ -4,7 +4,7 @@
 const STORE = (function(){ 
   
   return { 
-    freq: 0, playBackState: false, waveType:' '
+    freq: 650, playBackState: false, waveType:'sine'
   }; 
 
 }()); 
