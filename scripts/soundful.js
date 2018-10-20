@@ -4,47 +4,59 @@
 // eslint-disable-next-line no-unused-vars
 const soundful = (function() {
   // eslint-disable-next-line no-unused-vars
-  let context; 
+  let context;
   let oscillator;
 
   function render() {
-    if (STORE.current.playBackState) playSound(); 
-    
-    if (!STORE.current.playBackState) stopSound(); 
+    if (STORE.current.playBackState) playSound();
 
-    updateOscillator(); 
+    if (!STORE.current.playBackState) stopSound();
+
+    updateOscillator();
+    const allSoundsView = generateAllSoundsView(); 
+    $('#js-all-sounds').html(allSoundsView); 
   }
 
-  function updateOscillator(){ 
-    if(oscillator) { 
-      oscillator.type = STORE.current.waveType; 
+  function generateAllSoundsView() {
+    return STORE.sounds.map(sound => genereateSoundView(sound)); 
+  }
 
-      if (STORE.current.frequency) 
-      {
-        oscillator.frequency.value = STORE.current.frequency; 
+  function genereateSoundView(sound) {
+    return`
+      <div class="sound">
+      <p>Frequency: ${sound.frequency}</p>
+      <p>WaveType: ${sound.waveType}</p>
+      <p>PlayBack State: ${sound.playBackState}</p>
+      </div>`;
+  }
+
+  function updateOscillator() {
+    if (oscillator) {
+      oscillator.type = STORE.current.waveType;
+
+      if (STORE.current.frequency) {
+        oscillator.frequency.value = STORE.current.frequency;
+      } else {
+        oscillator.frequency.value = 650;
       }
-      else 
-      { 
-        oscillator.frequency.value = 650; 
-      }
-      return; 
+      return;
     }
   }
 
-  function playSound(){ 
-    if(oscillator) { 
-      return; 
+  function playSound() {
+    if (oscillator) {
+      return;
     }
-    oscillator = context.createOscillator(); 
-    oscillator.type = STORE.waveType; 
-    oscillator.connect(context.destination); 
-    oscillator.start(0); 
+    oscillator = context.createOscillator();
+    oscillator.type = STORE.waveType;
+    oscillator.connect(context.destination);
+    oscillator.start(0);
   }
 
-  function stopSound(){ 
-    if (oscillator) { 
-      oscillator.stop(0); 
-      oscillator = null; 
+  function stopSound() {
+    if (oscillator) {
+      oscillator.stop(0);
+      oscillator = null;
     }
   }
 
@@ -74,11 +86,10 @@ const soundful = (function() {
   function handleAddSound() {
     $('#js-add-sound').submit(function(event) {
       event.preventDefault();
-      STORE.sounds.push(Object.assign({}, STORE.current)); 
+      STORE.sounds.push(Object.assign({}, STORE.current));
       render();
     });
   }
-
 
   function bindEventListeners() {
     handleWaveType();
@@ -91,5 +102,5 @@ const soundful = (function() {
     context = new AudioContext();
   }
 
-  return {init, render, bindEventListeners};
+  return { init, render, bindEventListeners };
 })();

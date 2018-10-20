@@ -1,0 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
+.sound { 
+  border: 1px solid black; 
+}
+
+section { 
+  display : inline-block; 
+}
