@@ -3,7 +3,7 @@
 module.exports = { 
   development: { 
     client: 'pg', 
-    connection: process.env.DATABASE_URL || 'postgress://localhost/soundful-app', 
+    connection: process.env.DATABASE_URL || 'postgress://localhost/soundful', 
     debug: true, 
     pool: {min: 1, max: 2}
   }, 
