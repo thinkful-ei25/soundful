@@ -15,5 +15,14 @@ const api = (function (){
     }); 
   }; 
 
+  // eslint-disable-next-line no-unused-vars
+  const get = function(path, success, error) { 
+    return $.ajax({ 
+      type: 'GET', 
+      dataType: 'json', 
+      url: path
+    });
+  }; 
+
 
 }); 
