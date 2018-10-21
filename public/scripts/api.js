@@ -3,7 +3,6 @@
 
 // eslint-disable-next-line no-unused-vars
 const api = (function (){ 
-  // eslint-disable-next-line no-unused-vars
   const create = function(path, obj) { 
     return $.ajax({ 
       type: 'POST', 
@@ -15,7 +14,6 @@ const api = (function (){
     }); 
   }; 
 
-  // eslint-disable-next-line no-unused-vars
   const get = function(path, query) { 
     return $.ajax({ 
       type: 'GET', 

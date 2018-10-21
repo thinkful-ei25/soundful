@@ -1,4 +1,4 @@
-/* global $ STORE */
+/* global $ api STORE */
 'use strict';
 
 // eslint-disable-next-line no-unused-vars
@@ -86,8 +86,17 @@ const soundful = (function() {
   function handleAddSound() {
     $('#js-add-sound').submit(function(event) {
       event.preventDefault();
-      STORE.sounds.push(Object.assign({}, STORE.current));
-      render();
+      const newObject = Object.assign({}, STORE.current); 
+      console.log('newObject', newObject);      
+      //STORE.sounds.push(Object.assign({}, STORE.current));
+      api.create('/api/sounds', newObject)
+        .then(updateResponse => { 
+          STORE.sounds.push(STORE.current);
+          return api.get('api/sounds'); 
+        })
+        .then(response => { 
+          render(); 
+        }); 
     });
   }
 
