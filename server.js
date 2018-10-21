@@ -5,12 +5,16 @@ const morgan = require('morgan');
 const cors = require('cors'); 
 
 const { PORT } = require('./config'); 
+const soundsRouter = require('./routes/sounds'); 
+
 const app = express(); 
 
 app.use(morgan('dev')); 
 app.use(express.static('public')); 
 app.use(cors()); 
 app.use(express.json()); 
+
+app.use('/api/sounds', soundsRouter); 
 
 app.use((req, res, next) => { 
   const err = new Error('Not Found'); 

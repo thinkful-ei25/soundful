@@ -102,5 +102,5 @@ const soundful = (function() {
     context = new AudioContext();
   }
 
-  return { init, render, bindEventListeners };
-})();
+  return {init, render, bindEventListeners};
+}());

@@ -16,13 +16,18 @@ const api = (function (){
   }; 
 
   // eslint-disable-next-line no-unused-vars
-  const get = function(path, success, error) { 
+  const get = function(path, query) { 
     return $.ajax({ 
       type: 'GET', 
+      url: path,
       dataType: 'json', 
-      url: path
+      data: query
     });
   }; 
 
+  return { 
+    get,
+    create
+  }; 
 
-}); 
+}()); 
